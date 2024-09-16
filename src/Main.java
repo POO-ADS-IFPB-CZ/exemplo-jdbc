@@ -6,13 +6,12 @@ public class Main {
     public static void main(String[] args) {
 
         try{
-            Connection connection = new ConFactory().getConnection();
-            if(connection!= null){
-                System.out.println("conectado");
+            UsuarioDao dao = new UsuarioDao();
+            if(dao.adicionarUsuario(new Usuario("joao@gmail.com", "João"))){
+                System.out.println("Salvo");
             }else{
-                System.out.println("Falha");
+                System.out.println("Falha ao adicionar");
             }
-
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {
