@@ -7,7 +7,6 @@ public class Main {
 
         try{
             Connection connection = new ConFactory().getConnection();
-
             if(connection!= null){
                 System.out.println("conectado");
             }else{
