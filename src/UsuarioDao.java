@@ -3,7 +3,24 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Realiza a persistência de usuários utilizando JDBC
+ * @see java.sql.PreparedStatement
+ * @see java.sql.ResultSet
+ * @author Paulo Freitas
+ * @version 1.0
+ */
+
 public class UsuarioDao {
+
+    /**
+     * Adiciona um objeto usuário ao banco
+     * @param usuario o usuário que será inserido
+     * @return true, se o objeto for inserido ou false, caso não seja
+     * @throws SQLException quando for violada restrição do banco
+     * @throws IOException quando houver falha de conexão com o arquivo de configuração
+     * @throws ClassNotFoundException quando houver falha no driver JDBC
+     */
 
     public boolean adicionarUsuario(Usuario usuario) throws SQLException, IOException,
             ClassNotFoundException {
@@ -15,6 +32,14 @@ public class UsuarioDao {
             return stmt.executeUpdate() > 0;
         }
     }
+
+    /**
+     *
+     * @return
+     * @throws SQLException
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
 
     public List<Usuario> listarUsuarios() throws SQLException, IOException,
             ClassNotFoundException {
@@ -31,6 +56,15 @@ public class UsuarioDao {
             return usuarios;
         }
     }
+
+    /**
+     *
+     * @param email
+     * @return
+     * @throws SQLException
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
 
     public Usuario buscarPorEmail(String email) throws SQLException, IOException,
             ClassNotFoundException {
