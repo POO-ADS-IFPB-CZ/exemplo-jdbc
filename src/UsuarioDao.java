@@ -1,7 +1,7 @@
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UsuarioDao {
 
@@ -16,4 +16,19 @@ public class UsuarioDao {
         }
     }
 
+    public List<Usuario> listarUsuarios() throws SQLException, IOException,
+            ClassNotFoundException {
+        try(Connection connection = new ConFactory().getConnection()){
+            PreparedStatement stmt = connection.prepareStatement(
+                    "SELECT * FROM usuario ORDER BY email");
+            ResultSet rs = stmt.executeQuery();
+            List<Usuario> usuarios = new ArrayList<>();
+            while (rs.next()){
+                String email = rs.getString("email");
+                String nome = rs.getString("nome");
+                usuarios.add(new Usuario(email, nome));
+            }
+            return usuarios;
+        }
+    }
 }

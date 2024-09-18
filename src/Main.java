@@ -7,11 +7,12 @@ public class Main {
 
         try{
             UsuarioDao dao = new UsuarioDao();
-            if(dao.adicionarUsuario(new Usuario("maria@gmail.com", "Maria"))){
-                System.out.println("Salvo");
-            }else{
-                System.out.println("Falha ao adicionar");
-            }
+//            if(dao.adicionarUsuario(new Usuario("maria@gmail.com", "Maria"))){
+//                System.out.println("Salvo");
+//            }else{
+//                System.out.println("Falha ao adicionar");
+//            }
+            System.out.println(dao.listarUsuarios());
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {
