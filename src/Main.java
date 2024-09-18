@@ -7,7 +7,7 @@ public class Main {
 
         try{
             UsuarioDao dao = new UsuarioDao();
-            if(dao.adicionarUsuario(new Usuario("joao@gmail.com", "João"))){
+            if(dao.adicionarUsuario(new Usuario("maria@gmail.com", "Maria"))){
                 System.out.println("Salvo");
             }else{
                 System.out.println("Falha ao adicionar");
