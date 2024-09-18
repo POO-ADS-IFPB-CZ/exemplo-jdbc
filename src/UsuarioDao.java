@@ -31,4 +31,20 @@ public class UsuarioDao {
             return usuarios;
         }
     }
+
+    public Usuario buscarPorEmail(String email) throws SQLException, IOException,
+            ClassNotFoundException {
+        try(Connection connection = new ConFactory().getConnection()){
+            PreparedStatement stmt = connection.prepareStatement(
+                    "SELECT * FROM usuario WHERE email = ?");
+            stmt.setString(1, email);
+            ResultSet rs = stmt.executeQuery();
+            if(rs.next()){
+                String email1 = rs.getString("email");
+                String nome = rs.getString("nome");
+                return new Usuario(email1, nome);
+            }
+            return null;
+        }
+    }
 }

@@ -12,7 +12,8 @@ public class Main {
 //            }else{
 //                System.out.println("Falha ao adicionar");
 //            }
-            System.out.println(dao.listarUsuarios());
+//            System.out.println(dao.listarUsuarios());
+            System.out.println(dao.buscarPorEmail("pedro@gmail.com"));
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {
